@@ -24,13 +24,13 @@ jobs:
           kubectl get nodes
 
       - name: Make script executable
-        run: chmod +x scripts/build-and-push.sh
+        run: chmod +x ./build-and-push.sh
 
       - name: Build and push Docker images
-        run: ./scripts/build-and-push.sh
+        run: ./build-and-push.sh
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f k86/
+          kubectl apply -f k8s/
           kubectl rollout status deployment/frontend
           kubectl rollout status deployment/backend
